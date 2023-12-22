@@ -20,6 +20,10 @@ library(ggtext)
 # 1.Descargar los datos
 #------------------------
 
+# Copiando y pegando la url en tu buscador, puedes descargar la base de la Union Europea sobre asentamientos humanos
+# a partir de la cual se realizara el mapa en cuestion.
+# En caso de hacerlo asi, una vez este el archivo .tif extraido en tu directorio de trabajo, puedes empezar a trabajar desde la linea 50
+
 url <- 
   "https://jeodpp.jrc.ec.europa.eu/ftp/jrc-opendata/GHSL/GHS_POP_GLOBE_R2023A/GHS_POP_E2025_GLOBE_R2023A_4326_30ss/V1-0/GHS_POP_E2025_GLOBE_R2023A_4326_30ss_V1_0.zip"
 
@@ -35,12 +39,13 @@ download.file(
 #----------------------
 
 unzip(file_name)        # Estos comandos son para descomprimir el archivo descargado desde R, si genera algun error, lo mejor es extraer manualmente el archivo con extensión .tif
-                        # en ese caso, omitir estos comandos y continuar desde la linea 45.
+                        # en ese caso, omitir estos comandos y continuar desde la linea 50.
 
 raster_name <- gsub(    
    ".zip", ".tif",
    file_name
  )
+
 
 pop <- terra::rast(raster_name) # Levantamos el .tif (formato raster) en el ambiente de trabajo.
 
